@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+export SNDS_KEY=
 
 # RBL URL
 STOP_FORUM_SPAM=http://www.stopforumspam.com/downloads/listed_ip_1_all.zip
@@ -31,6 +32,8 @@ USER_AGENT='Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
 CURRENT_DIR=`dirname \`readlink -f $0\``
 REPUTATION_DIR="${CURRENT_DIR}/reputation"
 OUTPUT_DIR="${CURRENT_DIR}/temp"
+
+echo "OUTPUT_DIR=$OUTPUT_DIR"
 
 REPUTATION_SCRIPT="${REPUTATION_DIR}/main.py"
 
@@ -79,8 +82,8 @@ function download {
         >&2 echo "Please define your personal SNDS key in SNDS_KEY varenv to fetch live.com abuse report"
     fi
 
-
     cd -
+
 }
 
 # Parse downloaded data
@@ -140,8 +143,8 @@ function main {
     setup
     download
     parse
-    purge
-    compute
+    #purge
+    #compute
 
     >&2 echo "# End fetcher"
     date 1>&2

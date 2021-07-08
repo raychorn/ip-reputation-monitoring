@@ -3,3 +3,5 @@
 doc/build
 doc/.*
 .coverage
+blocklist
+sfs
